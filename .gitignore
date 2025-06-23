@@ -1,0 +1,12 @@
+# Loại trừ thư mục môi trường ảo
+venv/
+# Loại trừ file/thư mục cấu hình IDE
+.idea/
+# Loại trừ file biên dịch Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+# Loại trừ file hệ điều hành
+.DS_Store
+Thumbs.db
