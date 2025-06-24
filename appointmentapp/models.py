@@ -84,6 +84,9 @@ class Patient(BaseModel):
 
     appointments = relationship('Appointment', back_populates='patient')
     payments = relationship('Payment', back_populates='patient')
+    user_id = Column(Integer, ForeignKey('User.user_id'))
+    user = relationship('User')
+
 
     def __str__(self):
         return self.full_name

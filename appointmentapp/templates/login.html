@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='login-style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='login-vars.css') }}">
+
+  <!-- Style Reset & Input -->
+  <style>
+    a, button, input, select, h1, h2, h3, h4, h5, * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: none;
+      text-decoration: none;
+      background: none;
+      -webkit-font-smoothing: antialiased;
+    }
+    menu, ol, ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    input {
+      position: absolute;
+      background: transparent;
+      border: none;
+      color: #000;
+      font-size: 16px;
+      padding: 20px;
+      width: 420px;
+    }
+    .login {
+      background: url("{{ url_for('static', filename='login.png') }}") no-repeat center center;
+      background-size: cover;
+      height: 100vh;
+      width: 100vw;
+      position: relative;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background container -->
+  <div class="login">
+
+    <div class="rectangle-1"></div>
+    <div class="hello-welcome-here">Hello, Welcome here</div>
+    <div class="choose-one-of-the-option-to-go">Choose one of the option to go</div>
+
+    <!-- Login Form -->
+    <form method="POST" action="{{ url_for('login') }}">
+      <!-- Email field -->
+      <img class="rectangle-2" src="{{ url_for('static', filename='input-bg.svg') }}">
+      <input type="email" name="email" placeholder="Email" class="rectangle-2" required style="top: 372px; left: 507px;">
+
+      <!-- Password field -->
+      <img class="rectangle-3" src="{{ url_for('static', filename='input-bg.svg') }}">
+      <input type="password" name="password" placeholder="Password" class="rectangle-3" required style="top: 457px; left: 507px;">
+
+      <!-- Submit button -->
+      <button type="submit" class="rectangle-7" style="top: 742px; left: 563px;"></button>
+      <div class="log-in">Log in</div>
+    </form>
+
+    <div class="or-continue-with">Or continue with</div>
+    <div class="line-1"></div>
+
+    <!-- Social icons -->
+    <div class="rectangle-4"></div>
+    <div class="rectangle-5"></div>
+    <div class="rectangle-6"></div>
+    <img class="_341350527-1184363148892088-4003333439020170582-n-2" src="{{ url_for('static', filename='n-20.png') }}">
+    <img class="_341350527-1184363148892088-4003333439020170582-n-3" src="{{ url_for('static', filename='n-30.png') }}">
+    <img class="_341350527-1184363148892088-4003333439020170582-n-22" src="{{ url_for('static', filename='n-21.png') }}">
+
+  </div>
+
+</body>
+</html>

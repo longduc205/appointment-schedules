@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='sign-up-style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='sign-up-vars.css') }}">
+
+  <style>
+    input {
+      position: absolute;
+      background: transparent;
+      border: none;
+      color: black;
+      font-size: 16px;
+      padding: 8px;
+      z-index: 10;
+    }
+
+    .email-input {
+      top: 197px;
+      left: 698px;
+      width: 441px;
+      height: 35px;
+    }
+
+    .fname-input {
+      top: 284px;
+      left: 698px;
+      width: 203px;
+      height: 35px;
+    }
+
+    .lname-input {
+      top: 284px;
+      left: 937px;
+      width: 202px;
+      height: 35px;
+    }
+
+    .pass-input {
+      top: 367px;
+      left: 698px;
+      width: 441px;
+      height: 35px;
+    }
+
+    .day-input {
+      top: 477px;
+      left: 696px;
+      width: 128px;
+      height: 35px;
+    }
+
+    .month-input {
+      top: 477px;
+      left: 854px;
+      width: 128px;
+      height: 35px;
+    }
+
+    .year-input {
+      top: 477px;
+      left: 1011px;
+      width: 128px;
+      height: 35px;
+    }
+
+    .create-account-button {
+      position: absolute;
+      top: 591px;
+      left: 802px;
+      width: 202px;
+      height: 46px;
+      background: #3ea2ff;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+    }
+  </style>
+
+  <title>Sign Up</title>
+</head>
+<body>
+  <div class="sign-up">
+    <div class="frame-1">
+
+      <!-- Background -->
+      <img class="background-1" src="{{ url_for('static', filename='background-10.svg') }}" />
+      <img class="rectangle-1" src="{{ url_for('static', filename='rectangle-10.svg') }}" />
+
+      <!-- Form -->
+      <form method="POST" action="{{ url_for('signup') }}">
+
+        <!-- Email -->
+        <img class="rectangle-3" src="{{ url_for('static', filename='rectangle-30.svg') }}" />
+        <input type="email" name="email" class="email-input" placeholder="Email address" required />
+
+        <!-- First & Last Name -->
+        <img class="rectangle-2" src="{{ url_for('static', filename='rectangle-20.svg') }}" />
+        <input type="text" name="first_name" class="fname-input" placeholder="First Name" required />
+
+        <img class="rectangle-5" src="{{ url_for('static', filename='rectangle-50.svg') }}" />
+        <input type="text" name="last_name" class="lname-input" placeholder="Last Name" required />
+
+        <!-- Password -->
+        <img class="rectangle-4" src="{{ url_for('static', filename='rectangle-40.svg') }}" />
+        <input type="password" name="password" class="pass-input" placeholder="Password" required />
+
+        <!-- Date of Birth -->
+        <img class="rectangle-6" src="{{ url_for('static', filename='rectangle-60.svg') }}" />
+        <input type="number" name="day" class="day-input" placeholder="Day" required min="1" max="31" />
+
+        <img class="rectangle-7" src="{{ url_for('static', filename='rectangle-70.svg') }}" />
+        <input type="number" name="month" class="month-input" placeholder="Month" required min="1" max="12" />
+
+        <img class="rectangle-8" src="{{ url_for('static', filename='rectangle-80.svg') }}" />
+        <input type="number" name="year" class="year-input" placeholder="Year" required min="1900" max="2100" />
+
+        <!-- Submit -->
+        <button type="submit" class="create-account-button">Create account</button>
+      </form>
+
+      <!-- Static UI Elements -->
+      <div class="create-an-account">Create an account</div>
+      <div class="welcome">Welcome</div>
+      <div class="sign-up2">Sign-up</div>
+
+      <div class="already-have-an-account-sign-in">
+        <span>
+          <span class="already-have-an-account-sign-in-span">Already have an account </span>
+          <span class="already-have-an-account-sign-in-span2">Sign-in</span>
+        </span>
+      </div>
+
+      <div class="by-clicking-create-account-i-agree-that-i-have-read-and-accepted-the-terms-of-use-and-privacy-policy">
+        <span>
+          <span class="...-span">By clicking Create account, I agree that I have read and accepted the </span>
+          <span class="...-span2">Terms of use</span>
+          <span class="...-span"> and </span>
+          <span class="...-span3">Privacy Policy</span>
+        </span>
+      </div>
+
+      <img class="rectangle-9" src="{{ url_for('static', filename='rectangle-90.svg') }}" />
+      <img class="vector" src="{{ url_for('static', filename='vector0.svg') }}" />
+    </div>
+  </div>
+</body>
+</html>
