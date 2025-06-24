@@ -8,5 +8,66 @@
 </head>
 <body>
     <h1 class="text-center">Make Appointment</h1>
+    <div class="container">
+        <div class="row">
+            <!-- Patient Info -->
+            <div class="col-md-6">
+                <h3>Thông tin bệnh nhân</h3>
+                <form method="POST" action="/make_appointment">
+                    <div class="form-group">
+                        <label for="full_name">Họ và tên</label>
+                        <input type="text" class="form-control" id="full_name" name="full_name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date_of_birth">Ngày sinh</label>
+                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient_email">Email</label>
+                        <input type="email" class="form-control" id="patient_email" name="patient_email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient_phone">Số điện thoại</label>
+                        <input type="text" class="form-control" id="patient_phone" name="patient_phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa chỉ</label>
+                        <input type="text" class="form-control" id="address" name="address">
+                    </div>
+                    <div class="form-group">
+                        <label for="insurance_number">Số bảo hiểm</label>
+                        <input type="text" class="form-control" id="insurance_number" name="insurance_number" required>
+                    </div>
+            </div>
+            <!-- Appointment Info -->
+            <div class="col-md-6">
+                <h3>Đặt lịch hẹn</h3>
+                    <div class="form-group">
+                        <label for="specialty">Chuyên khoa</label>
+                        <select class="form-control" id="specialty" name="specialty">
+                            <option value="">Chọn chuyên khoa</option>
+                            <!-- Thêm các option chuyên khoa ở đây -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="doctor">Bác sĩ</label>
+                        <select class="form-control" id="doctor" name="doctor">
+                            <option value="">Chọn bác sĩ</option>
+                            <!-- Thêm các option bác sĩ ở đây -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment_date">Ngày hẹn</label>
+                        <input type="date" class="form-control" id="appointment_date" name="appointment_date">
+                    </div>
+                    <div class="form-group">
+                        <label for="appointment_time">Giờ hẹn</label>
+                        <input type="time" class="form-control" id="appointment_time" name="appointment_time">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Đặt lịch</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
