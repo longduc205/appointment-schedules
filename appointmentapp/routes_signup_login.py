@@ -16,12 +16,13 @@ def signup():
             first_name = request.form['first_name']
             last_name = request.form['last_name']
             email = request.form['email']
-            password = request.form['password']
+            password_raw = request.form['password']
+            password_hashed = generate_password_hash(password_raw)
             dob = datetime.strptime(f"{request.form['year']}-{request.form['month']}-{request.form['day']}", "%Y-%m-%d")
 
             user = User(
                 user_name=email,
-                password=generate_password_hash(password),
+                password=password_hashed,
                 user_email=email,
                 fullname_user=f"{first_name} {last_name}",
                 user_phone="0000000000",
@@ -57,13 +58,22 @@ def login():
         email = request.form.get('email')
         password_input = request.form.get('password')
 
+        print("📥 Email:", email)
+        print("📥 Password:", password_input)
+
         user = User.query.filter_by(user_email=email).first()
+        print("🔍 Found user:", user)
 
         if user and check_password_hash(user.password, password_input):
+            print("✅ Login successful!")
             session['user_id'] = user.user_id
             session['user_name'] = user.fullname_user
             session['role'] = user.user_role
             return redirect(url_for('user_bp.profile'))
+        else:
+            print("❌ Invalid login")
+            flash("Invalid email or password", "danger")
 
-        flash("Invalid email or password", "danger")
     return render_template('login.html')
+
+

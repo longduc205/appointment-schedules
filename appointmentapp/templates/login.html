@@ -54,7 +54,8 @@
     <div class="hello-welcome-here">Hello, Welcome here</div>
     <div class="choose-one-of-the-option-to-go">Choose one of the option to go</div>
 
-    <a href="{{ url_for('main_bp.login') }}">Sign in</a>
+    <!-- ✅ Đặt form đúng chỗ -->
+    <form method="POST" action="{{ url_for('main_bp.login') }}">
 
       <!-- Email field -->
       <img class="rectangle-2" src="{{ url_for('static', filename='input-bg.svg') }}">
@@ -65,15 +66,10 @@
       <input type="password" name="password" placeholder="Password" class="rectangle-3" required style="top: 457px; left: 507px;">
 
       <!-- Submit button -->
-      <!-- Submit button -->
-<button type="submit" class="rectangle-7" style="top: 742px; left: 563px;"></button>
-<div class="log-in">Log in</div>
+      <button type="submit" class="rectangle-7" style="top: 742px; left: 563px;">
+        Log in
+      </button>
 
-<!-- Link to Sign Up -->
-<div class="go-to-signup" style="position:absolute; top: 820px; left: 610px; font-size: 14px; font-family: 'Inter', sans-serif; color: #333;">
-  Don't have an account? 
-  <a href="{{ url_for('main_bp.signup') }}" style="color: #0366ff; font-weight: bold; text-decoration: none;">Sign up</a>
-</div>
 
     </form>
 
@@ -87,6 +83,12 @@
     <img class="_341350527-1184363148892088-4003333439020170582-n-2" src="{{ url_for('static', filename='n-20.png') }}">
     <img class="_341350527-1184363148892088-4003333439020170582-n-3" src="{{ url_for('static', filename='n-30.png') }}">
     <img class="_341350527-1184363148892088-4003333439020170582-n-22" src="{{ url_for('static', filename='n-21.png') }}">
+
+    <!-- Link to Sign Up -->
+    <div class="go-to-signup" style="position:absolute; top: 820px; left: 610px; font-size: 14px; font-family: 'Inter', sans-serif; color: #333;">
+      Don't have an account? 
+      <a href="{{ url_for('main_bp.signup') }}" style="color: #0366ff; font-weight: bold; text-decoration: none;">Sign up</a>
+    </div>
 
   </div>
 
