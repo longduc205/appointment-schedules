@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách lịch hẹn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-4">
+        <h2 class="mb-4">Danh sách lịch hẹn</h2>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Bệnh nhân</th>
+                    <th>Bác sĩ</th>
+                    <th>Chuyên khoa</th>
+                    <th>Ngày hẹn</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appt, patient, doctor, specialty in appointments %}
+                <tr>
+                    <td>{{ appt.appointment_id }}</td>
+                    <td>{{ patient.full_name }}</td>
+                    <td>{{ doctor.full_name }}</td>
+                    <td>{{ specialty.specialty_name }}</td>
+                    <td>{{ appt.appointment_date.strftime('%Y-%m-%d %H:%M') if appt.appointment_date else '' }}</td>
+                    <td>{{ appt.status_appointment }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="6" class="text-center">Không có lịch hẹn nào.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> 

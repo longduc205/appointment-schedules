@@ -7,66 +7,87 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1 class="text-center">Make Appointment</h1>
+    <header>
+            <div class="header-container">
+                <a class="header-title" href="#">Appointment App</a>
+            </div>
+    </header>
     <div class="container">
         <div class="row">
             <!-- Patient Info -->
             <div class="col-md-6">
-                <h3>Thông tin bệnh nhân</h3>
+                <h3 class="title">Patient Information</h3>
                 <form method="POST" action="/make_appointment">
+                    <div class="patient-info-container">
+                    <div class="patient-info">
                     <div class="form-group">
-                        <label for="full_name">Họ và tên</label>
+                        <label for="full_name">Full Name <span class="required">*</span></label>
                         <input type="text" class="form-control" id="full_name" name="full_name" required>
                     </div>
                     <div class="form-group">
-                        <label for="date_of_birth">Ngày sinh</label>
+                        <label for="date_of_birth">Date of Birth <span class="required">*</span></label>
                         <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
                     </div>
                     <div class="form-group">
-                        <label for="patient_email">Email</label>
+                        <label for="patient_email">Email <span class="required">*</span></label>
                         <input type="email" class="form-control" id="patient_email" name="patient_email" required>
                     </div>
+                    </div>
+                    <div class="patient-info">
                     <div class="form-group">
-                        <label for="patient_phone">Số điện thoại</label>
+                        <label for="patient_phone">Phone Number <span class="required">*</span></label>
                         <input type="text" class="form-control" id="patient_phone" name="patient_phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="address">Địa chỉ</label>
+                        <label for="address">Address <span class="required">*</span></label>
                         <input type="text" class="form-control" id="address" name="address">
                     </div>
                     <div class="form-group">
-                        <label for="insurance_number">Số bảo hiểm</label>
+                        <label for="insurance_number">Insurance Number <span class="required">*</span></label>
                         <input type="text" class="form-control" id="insurance_number" name="insurance_number" required>
+                    </div>
+                    </div>
                     </div>
             </div>
             <!-- Appointment Info -->
             <div class="col-md-6">
-                <h3>Đặt lịch hẹn</h3>
+                <h3 class="title">Appointment Booking</h3>
+                <div class="appointment-info-container">
+                    <div class="appointment-info">
                     <div class="form-group">
-                        <label for="specialty">Chuyên khoa</label>
-                        <select class="form-control" id="specialty" name="specialty">
-                            <option value="">Chọn chuyên khoa</option>
-                            <!-- Thêm các option chuyên khoa ở đây -->
+                        <label for="specialty">Specialty <span class="required">*</span></label>
+                        <select class="form-control" name="specialty" required>
+                            <option value="">Select specialty</option>
+                            {% for specialty in specialties %}
+                                <option value="{{ specialty.specialty_id }}">{{ specialty.specialty_name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="doctor">Bác sĩ</label>
-                        <select class="form-control" id="doctor" name="doctor">
-                            <option value="">Chọn bác sĩ</option>
-                            <!-- Thêm các option bác sĩ ở đây -->
+                        <label for="doctor">Doctor <span class="required">*</span></label>
+                        <select class="form-control" name="doctor" required>
+                            <option value="">Select doctor</option>
+                            {% for doctor in doctors %}
+                                <option value="{{ doctor.doctor_id }}">{{ doctor.full_name }}</option>
+                            {% endfor %}
                         </select>
                     </div>
+                    </div>
+                    <div class="appointment-info">
                     <div class="form-group">
-                        <label for="appointment_date">Ngày hẹn</label>
-                        <input type="date" class="form-control" id="appointment_date" name="appointment_date">
+                        <label for="appointment_date">Appointment Date <span class="required">*</span></label>
+                        <input type="date" class="form-control" id="appointment_date" name="appointment_date" required>
                     </div>
                     <div class="form-group">
-                        <label for="appointment_time">Giờ hẹn</label>
-                        <input type="time" class="form-control" id="appointment_time" name="appointment_time">
+                        <label for="reason">Reason <span class="required">*</span></label>
+                        <input type="text" class="form-control" id="reason" name="reason" required>
                     </div>
-                    <button type="submit" class="btn btn-primary mt-3">Đặt lịch</button>
-                </form>
+                    </div>
             </div>
+            <div class="btn-container">
+                <button type="submit" class="btn btn-primary mt-3">Book Appointment</button>
+            </div>
+        </form>
         </div>
     </div>
 </body>

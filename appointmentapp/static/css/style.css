@@ -1,15 +1,131 @@
 * {
     font-family: 'Poppins', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: #f7f7f7;
 }
-h1.text-center {
-    color: #000;
-    font-size: 3rem;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 2rem;
+.header-container {
+    background-color: #0076c0;
+    padding: 20px 30px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+.header-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
 }
 
+
+h3.title {
+    color: #000;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h3.title::after {
+    content: "";
+    width: 73px;
+    background: #51be9d;
+    position: absolute;
+    bottom: -10px;
+    display: block;
+    height: 3px;
+}
+.container {
+    margin-top: 100px !important;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 40px 30px;
+}
+
+.patient-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.patient-info {
+    width: 50%;
+}
+.appointment-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.appointment-info {
+    width: 50%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    margin-top: 5px;
+    color: #999;
+    background-color: #f9f9f9;
+}
+
+.col-md-6:nth-child(2) {
+    margin-top: 60px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #0078c5;
+}
+
+.required {
+    color: red;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-primary {
+    text-align: center;
+    background: #51be9d;
+    padding: 15px 60px;
+    border-radius: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn-container {
+    margin-top: 30px;
+    text-align: center;
+}

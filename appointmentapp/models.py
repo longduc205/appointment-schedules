@@ -81,6 +81,8 @@ class Patient(BaseModel):
     address = Column(String(220))
     medical_history = Column(Text)
     insurance_number = Column(String(50), nullable=False)
+    user_id = Column(Integer, ForeignKey('User.user_id'))
+    user = relationship('User', back_populates='patients')
 
     appointments = relationship('Appointment', back_populates='patient')
     payments = relationship('Payment', back_populates='patient')
@@ -101,6 +103,8 @@ class User(BaseModel):
     fullname_user = Column(String(100), nullable=False)
     user_phone = Column(String(15), nullable=False)
     user_status = Column(Enum('active', 'inactive', name='user_status'), default='active')
+
+    patients = relationship('Patient', back_populates='user')
 
     def __str__(self):
         return self.user_name
