@@ -97,7 +97,8 @@
       <img class="rectangle-1" src="{{ url_for('static', filename='rectangle-10.svg') }}" />
 
       <!-- Form -->
-      <form method="POST" action="{{ url_for('signup') }}">
+      <form method="POST" action="{{ url_for('main_bp.signup') }}">
+
 
         <!-- Email -->
         <img class="rectangle-3" src="{{ url_for('static', filename='rectangle-30.svg') }}" />
@@ -136,7 +137,7 @@
       <div class="already-have-an-account-sign-in">
   <span>
     <span class="already-have-an-account-sign-in-span">Already have an account </span>
-    <a href="{{ url_for('login') }}" class="already-have-an-account-sign-in-span2">Sign-in</a>
+    <a href="{{ url_for('main_bp.login') }}" class="already-have-an-account-sign-in-span2">Sign-in</a>
   </span>
 </div>
 
