@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Appointments</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/watching.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">Appointments</div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">All Doctors</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="user-dropdown">
+            <img src="{{ url_for('static', filename='images/user.jpg') }}" class="profile-icon" alt="User">
+            <div class="dropdown-content">
+                <a href="#">My Profile</a>
+                <a href="#">My Appointments</a>
+                <a href="#">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2>My Appointments</h2>
+
+        {% for app in appointments %}
+        <div class="appointment-card">
+            <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="Doctor">
+            <div class="details">
+                <h3>{{ app.doctor.full_name }}</h3>
+                <p> Specialty: {{ app.doctor.specialty.specialty_name }}</p>
+                <p><strong>Room:</strong> {{ app.room.room_number }} - {{ app.room.room_location }}</p>
+                <p><strong>Date & Time:</strong> {{ app.appointment_date.strftime('%d %B, %Y | %I:%M %p') }}</p>
+            </div>
+            <div class="actions">
+                <form method="POST" action="{{ url_for('cancel_appointment', appointment_id=app.appointment_id) }}" class="cancel-form">
+                    <button type="submit" class="cancel-btn">Cancel appointment</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const cancelForms = document.querySelectorAll('.cancel-form');
+
+    cancelForms.forEach(function(form) {
+        form.addEventListener('submit', function (e) {
+            const confirmed = confirm("Are you sure you want to cancel this appointment?");
+            if (!confirmed) {
+                e.preventDefault(); 
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>
