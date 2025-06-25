@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 
 app = create_app()
+app.secret_key = '123456'  # nên dùng biến môi trường ở production
 
 @app.route('/')
 def home():
@@ -56,8 +57,7 @@ def signup():
         print(" Rendering signup.html")        
     return render_template("signup.html")
 
-app = create_app()
-app.secret_key = '123456'  # nên dùng biến môi trường ở production
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

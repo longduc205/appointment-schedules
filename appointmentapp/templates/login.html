@@ -65,8 +65,16 @@
       <input type="password" name="password" placeholder="Password" class="rectangle-3" required style="top: 457px; left: 507px;">
 
       <!-- Submit button -->
-      <button type="submit" class="rectangle-7" style="top: 742px; left: 563px;"></button>
-      <div class="log-in">Log in</div>
+      <!-- Submit button -->
+<button type="submit" class="rectangle-7" style="top: 742px; left: 563px;"></button>
+<div class="log-in">Log in</div>
+
+<!-- Link to Sign Up -->
+<div class="go-to-signup" style="position:absolute; top: 820px; left: 610px; font-size: 14px; font-family: 'Inter', sans-serif; color: #333;">
+  Don't have an account? 
+  <a href="{{ url_for('signup') }}" style="color: #0366ff; font-weight: bold; text-decoration: none;">Sign up</a>
+</div>
+
     </form>
 
     <div class="or-continue-with">Or continue with</div>
