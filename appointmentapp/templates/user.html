@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyle.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">USER</div>
+        <nav class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">All Doctors</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+        <div class="user-avatar">
+            <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="User" class="profile-icon">
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="profile-section">
+            <div class="profile-photo">
+                <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="Doctor">
+            </div>
+            <div class="profile-info">
+                <h2>{{ user.fullname_user }}</h2>
+                <hr>
+                <div class="info-block">
+                    <h4>Contact Information</h4>
+                    <p><strong>Email id:</strong> <a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:{{ user.user_phone }}">{{ user.user_phone }}</a></p>
+                    <p><strong>Address:</strong> {{ patient.address }}</p>
+                </div>
+                <div class="info-block">
+                    <h4>Basic Information</h4>
+                    <p><strong>Birthday:</strong> {{ patient.date_of_birth.strftime('%d %B, %Y') }}</p>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn-outline">Edit</button>
+                    <button class="btn-primary">Save information</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
