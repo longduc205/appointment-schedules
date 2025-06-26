@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Doctor's Appointments</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='da.css') }}">
+</head>
+<body>
+  <h2>Doctor's Appointment Schedule</h2>
+  <table>
+    <tr>
+      <th>Appointment Date</th>
+      <th>Status</th>
+      <th>Reason</th>
+      <th>Patient Name</th>
+      <th>Medical History</th>
+      <th>Phone</th>
+    </tr>
+    {% for a in appointments %}
+    <tr>
+      <td>{{ a.appointment_date.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>{{ a.status_appointment }}</td>
+      <td>{{ a.reason }}</td>
+      <td>{{ a.patient.full_name }}</td>
+      <td>{{ a.patient.medical_history }}</td>
+      <td>{{ a.patient.patient_phone }}</td>
+      <td>
+        <a href="{{ url_for('doctor_bp.manage_appointment', appointment_id=a.appointment_id, action='accept') }}">
+          <button class="action-btn accept-btn">Accept</button>
+        </a>
+        <a href="{{ url_for('doctor_bp.manage_appointment', appointment_id=a.appointment_id, action='deny') }}">
+          <button class="action-btn deny-btn">Deny</button>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
