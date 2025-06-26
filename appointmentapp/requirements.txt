@@ -1,7 +1,0 @@
-flask
-<<<<<<< HEAD
-flask-sqlalchemy
-=======
-flask-sqlalchemy 
->>>>>>> origin/doctor-feature
-flask_admin
