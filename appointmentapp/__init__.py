@@ -1,26 +1,14 @@
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
+from appointmentapp.extensions import db
+from appointmentapp.routes_doctor import doctor_bp
+from appointmentapp.routes_signup_login import main_bp  # đổi thành tên blueprint đúng
 
-# ✅ Tạo db trước
-db = SQLAlchemy()
+app = Flask(__name__)
+app.secret_key = '123456'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/appointmentdb?charset=utf8mb4'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-def create_app():
-    app = Flask(__name__)
-    app.secret_key = '123456'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/appointmentdb'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db.init_app(app)
 
-    # ✅ Khởi tạo app cho db
-    db.init_app(app)
-
-    # ✅ Import models SAU khi db đã init_app
-    from appointmentapp import models
-
-    # ✅ Import blueprint SAU models
-    from appointmentapp.routes_signup_login import main_bp
-    from appointmentapp.user_patient import user_bp
-
-    app.register_blueprint(main_bp)
-    app.register_blueprint(user_bp)
-
-    return app
+app.register_blueprint(doctor_bp)
+app.register_blueprint(main_bp)
