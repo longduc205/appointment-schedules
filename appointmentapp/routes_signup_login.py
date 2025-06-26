@@ -76,4 +76,20 @@ def login():
 
     return render_template('login.html')
 
+@main_bp.route('/login-doctor', methods=['GET', 'POST'])
+def login_doctor():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password_input = request.form.get('password')
 
+        user = User.query.filter_by(user_email=email, user_role='doctor').first()
+
+        if user and check_password_hash(user.password, password_input):
+            session['user_id'] = user.user_id
+            session['user_name'] = user.fullname_user
+            session['role'] = user.user_role
+            return redirect(url_for('user_bp.profile'))  # hoặc trang riêng cho doctor
+
+        flash("Invalid email or password", "danger")
+
+    return render_template('login_doctor.html')  # tạo riêng file HTML nếu muốn
