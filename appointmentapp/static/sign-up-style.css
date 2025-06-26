@@ -1,0 +1,336 @@
+.sign-up,
+.sign-up * {
+  box-sizing: border-box;
+}
+.sign-up {
+  height: 1080px;
+  position: relative;
+}
+.frame-1 {
+  background: #ffffff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  overflow: hidden;
+}
+.background-1 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  overflow: visible;
+  object-fit: cover;
+}
+.sign-up-page {
+  position: absolute;
+  inset: 0;
+}
+.rectangle-1 {
+  border-radius: 0px;
+  width: 512px;
+  height: 620px;
+  position: absolute;
+  left: 645px;
+  top: 38px;
+  overflow: visible;
+}
+.already-have-an-account-sign-in {
+  text-align: center;
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 698px;
+  top: 111px;
+  width: 222px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.already-have-an-account-sign-in-span {
+  color: #c8c8c8;
+}
+.already-have-an-account-sign-in-span2 {
+  color: #62a1ff;
+}
+.create-an-account {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Roboto-Bold", sans-serif;
+  font-size: 31px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 698px;
+  top: 73px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rectangle-2 {
+  border-radius: 0px;
+  width: 203px;
+  height: 35px;
+  position: absolute;
+  left: 698px;
+  top: 284px;
+  overflow: visible;
+}
+.rectangle-6 {
+  border-radius: 0px;
+  width: 128px;
+  height: 35px;
+  position: absolute;
+  left: 696px;
+  top: 477px;
+  overflow: visible;
+}
+.rectangle-7 {
+  border-radius: 0px;
+  width: 128px;
+  height: 35px;
+  position: absolute;
+  left: 854px;
+  top: 477px;
+  overflow: visible;
+}
+.rectangle-8 {
+  border-radius: 0px;
+  width: 128px;
+  height: 35px;
+  position: absolute;
+  left: 1011px;
+  top: 477px;
+  overflow: visible;
+}
+.rectangle-5 {
+  border-radius: 0px;
+  width: 202px;
+  height: 35px;
+  position: absolute;
+  left: 937px;
+  top: 283px;
+  overflow: visible;
+}
+.rectangle-9 {
+  border-radius: 0px;
+  width: 202px;
+  height: 46px;
+  position: absolute;
+  left: 802px;
+  top: 591px;
+  overflow: visible;
+}
+.create-account {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-ExtraBold", sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.01em;
+  font-weight: 800;
+  position: absolute;
+  left: 831px;
+  top: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rectangle-4 {
+  border-radius: 0px;
+  width: 441px;
+  height: 35px;
+  position: absolute;
+  left: 698px;
+  top: 367px;
+  overflow: visible;
+}
+.rectangle-3 {
+  border-radius: 0px;
+  width: 441px;
+  height: 35px;
+  position: absolute;
+  left: 698px;
+  top: 197px;
+  overflow: visible;
+}
+.email-address {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  position: absolute;
+  left: 698px;
+  top: 166px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.first-name {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  position: absolute;
+  left: 698px;
+  top: 255px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  position: absolute;
+  left: 698px;
+  top: 339px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.day {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 699px;
+  top: 448px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.month {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 856px;
+  top: 448px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.year {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 1012px;
+  top: 448px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.date-of-birth {
+  color: #e2e2e2;
+  text-align: center;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 19px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 696px;
+  top: 416px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.last-name {
+  color: #ffffff;
+  text-align: center;
+  font-family: "Lato-Medium", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  font-weight: 500;
+  position: absolute;
+  left: 937px;
+  top: 258px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.by-clicking-create-account-i-agree-that-i-have-read-and-accepted-the-terms-of-use-and-privacy-policy {
+  text-align: left;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 694px;
+  top: 525px;
+  width: 413px;
+  height: 41px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.by-clicking-create-account-i-agree-that-i-have-read-and-accepted-the-terms-of-use-and-privacy-policy-span {
+  color: #ffffff;
+}
+.by-clicking-create-account-i-agree-that-i-have-read-and-accepted-the-terms-of-use-and-privacy-policy-span2 {
+  color: #3ea2ff;
+}
+.by-clicking-create-account-i-agree-that-i-have-read-and-accepted-the-terms-of-use-and-privacy-policy-span3 {
+  color: #62a1ff;
+}
+.vector {
+  width: 0.94%;
+  height: 0.83%;
+  position: absolute;
+  right: 24.3%;
+  left: 74.77%;
+  bottom: 30.69%;
+  top: 68.47%;
+  overflow: visible;
+}
+.welcome {
+  color: #3c3737;
+  text-align: left;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 110px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 100px;
+  top: 2px;
+  width: 611px;
+  height: 143px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.sign-up2 {
+  color: #3c3737;
+  text-align: left;
+  font-family: "Lato-Bold", sans-serif;
+  font-size: 80px;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  position: absolute;
+  left: 309px;
+  top: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}

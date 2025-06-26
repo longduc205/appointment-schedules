@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    border-bottom: 1px solid #ddd;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 24px;
+    color: #4B5FFF;
+}
+
+.nav-links a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid #4B5FFF;
+    color: #4B5FFF;
+}
+
+.user-avatar .profile-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.container {
+    padding: 40px;
+}
+
+.profile-section {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.profile-photo img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-info h2 {
+    margin-bottom: 10px;
+}
+
+hr {
+    margin: 10px 0 20px;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.info-block {
+    margin-bottom: 20px;
+}
+
+.info-block h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.info-block p {
+    margin: 4px 0;
+}
+
+.info-block a {
+    color: #4B5FFF;
+    text-decoration: none;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+}
+
+.btn-outline,
+.btn-primary {
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid #4B5FFF;
+    background: transparent;
+    color: #4B5FFF;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background-color: #4B5FFF;
+    color: white;
+}
+
+.btn-outline:hover,
+.btn-primary:hover {
+    opacity: 0.8;
+}
