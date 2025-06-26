@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>User Profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/watching.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -16,8 +17,13 @@
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
-        <div class="user-avatar">
-            <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="User" class="profile-icon">
+        <div class="user-dropdown">
+            <img src="{{ url_for('static', filename='images/user.jpg') }}" class="profile-icon" alt="User">
+            <div class="dropdown-content">
+                <a href="{{ url_for('profile') }}">My Profile</a>
+                <a href="{{ url_for('appointments') }}">My Appointments</a>
+                <a href="#">Logout</a>
+            </div>
         </div>
     </header>
 

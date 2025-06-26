@@ -18,8 +18,8 @@
         <div class="user-dropdown">
             <img src="{{ url_for('static', filename='images/user.jpg') }}" class="profile-icon" alt="User">
             <div class="dropdown-content">
-                <a href="#">My Profile</a>
-                <a href="#">My Appointments</a>
+                <a href="{{ url_for('profile') }}">My Profile</a>
+                <a href="{{ url_for('appointments') }}">My Appointments</a>
                 <a href="#">Logout</a>
             </div>
         </div>
