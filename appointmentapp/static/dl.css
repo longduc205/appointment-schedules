@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  background-color: #fff;
+  padding: 40px;
+  width: 480px; /* Tăng từ 360px */
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  text-align: center;
+  font-size: 28px; /* Tăng kích thước tiêu đề */
+}
+
+p {
+  text-align: center;
+  color: #555;
+  font-size: 16px;
+  margin-bottom: 25px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 14px;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #4f46e5;
+}
+
+.small {
+  font-size: 15px;
+  text-align: center;
+  color: #666;
+  margin-top: 10px;
+}
+
+.small a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.small a:hover {
+  text-decoration: underline;
+}

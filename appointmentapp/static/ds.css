@@ -1,0 +1,22 @@
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: #f2f4f8;
+    text-align: center;
+    padding: 50px;
+    margin: 0;
+    font-size: 18px; /* to hơn tổng thể */
+    color: #333;
+}
+
+h2 {
+    font-size: 32px; /* tăng cỡ chữ tiêu đề */
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* đổ bóng nhẹ */
+}
+.container h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
