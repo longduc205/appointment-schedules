@@ -45,7 +45,10 @@ def update_user_profile(user_id):
 
 @app.route('/appointmentwatching')
 def appointments():
+    user_id = session.get('user_id')
     appointments = Appointment.query.filter(Appointment.status_appointment != 'cancelled').all()
+    appointments = Appointment.query.filter_by(patient_id=user_id).all()
+    print(appointments)
     return render_template('appointmentwatching.html', appointments=appointments)
 
 @app.route('/cancel-appointment/<int:appointment_id>', methods=['POST'])
