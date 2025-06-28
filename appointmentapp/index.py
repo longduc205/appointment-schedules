@@ -1,8 +1,9 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 from appointmentapp import app
 from appointmentapp import utils
 from appointmentapp.models import *
 from appointmentapp import db
+from datetime import datetime
 
 @app.route('/')
 def home():
@@ -21,6 +22,7 @@ def make_appointment():
     insurance_number = request.form['insurance_number']
     doctor_id = int(request.form['doctor'])
     appointment_date = datetime.strptime(request.form['appointment_date'], '%Y-%m-%d')
+    reason = request.form.get('reason', '')
 
     new_patient = Patient(
         full_name=full_name,
@@ -38,7 +40,7 @@ def make_appointment():
         doctor_id=doctor_id,
         appointment_date=appointment_date,
         status_appointment='scheduled',
-        reason='',
+        reason=reason,
         note=''
     )
     db.session.add(new_appointment)
@@ -55,6 +57,15 @@ def appointments():
         .join(Specialty, Doctor.specialty_id == Specialty.specialty_id) \
         .all()
     return render_template('appointments.html', appointments=appointments)
+
+@app.route('/api/doctors/<int:specialty_id>')
+def get_doctors_by_specialty(specialty_id):
+    """API endpoint để lấy danh sách bác sĩ theo chuyên khoa"""
+    doctors = Doctor.query.filter_by(specialty_id=specialty_id, doctor_status='active').all()
+    return jsonify([{
+        'doctor_id': doctor.doctor_id,
+        'full_name': doctor.full_name
+    } for doctor in doctors])
 
 if __name__ == '__main__':
     from appointmentapp.admin import *
