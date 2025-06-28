@@ -1,6 +1,7 @@
-from flask import render_template, request, session, url_for, redirect, flash
+from flask import render_template, request, session, url_for, redirect
 from appointmentapp import app
 from appointmentapp import utils
+
 
 @app.route('/')
 def home():
@@ -20,49 +21,6 @@ def profile():
         return "User not found", 404
 
     return render_template('user.html', user=user, patient=patient)
-
-@app.route('/update-user/<int:user_id>', methods=['POST'])
-def update_user_profile(user_id):
-    user = User.query.get(user_id)
-    patient = Patient.query.get(user_id)
-
-    if not user or not patient:
-        flash('User not found.', 'danger')
-        return redirect(url_for('profile'))
-
-    # Lấy dữ liệu từ form một cách an toàn
-    user.fullname_user = request.form.get('fullname_user')
-    user.user_email = request.form.get('user_email')
-    user.user_phone = request.form.get('user_phone')
-    patient.address = request.form.get('address')
-    patient.date_of_birth = request.form.get('date_of_birth')
-
-    db.session.commit()
-    flash('Information updated successfully!', 'success')
-    return redirect(url_for('profile'))
-def update_user_profile(user_id):
-    print("🧾 Dữ liệu form nhận được:", request.form)
-
-@app.route('/appointmentwatching')
-def appointments():
-    user_id = session.get('user_id')
-    appointments = Appointment.query.filter(Appointment.status_appointment != 'cancelled').all()
-    appointments = Appointment.query.filter_by(patient_id=user_id).all()
-    print(appointments)
-    return render_template('appointmentwatching.html', appointments=appointments)
-
-@app.route('/cancel-appointment/<int:appointment_id>', methods=['POST'])
-def cancel_appointment(appointment_id):
-    appointment = Appointment.query.get(appointment_id)
-    if appointment:
-        if appointment.status_appointment == 'completed':
-            flash('Cannot cancel a completed appointment.', 'warning')
-        appointment.status_appointment = 'cancelled'
-        db.session.commit()
-        flash('Appointment has been cancelled.', 'success')
-    else:
-        flash('Appointment not found.', 'error')
-    return redirect(url_for('appointments'))
 
 if __name__ == '__main__':
     from appointmentapp.admin import *
