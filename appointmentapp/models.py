@@ -81,7 +81,9 @@ class Patient(BaseModel):
     address = Column(String(220))
     medical_history = Column(Text)
     insurance_number = Column(String(50), nullable=False)
+    user_id = Column(Integer, ForeignKey('User.user_id'), nullable=False)  
 
+    user = relationship('User', backref='patient')  
     appointments = relationship('Appointment', back_populates='patient')
     payments = relationship('Payment', back_populates='patient')
     
