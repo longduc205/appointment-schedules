@@ -116,3 +116,7 @@ body {
     display: flex;
     flex-direction: column;
 }
+.flash.danger {
+    color: red;
+    font-weight: bold;
+}

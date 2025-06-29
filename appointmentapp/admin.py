@@ -1,10 +1,10 @@
-from appointmentapp import app
 from flask_admin import Admin
-from appointmentapp.models import *
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectField
+from appointmentapp.models import *
+from appointmentapp import db
 
-admin = Admin(app, name='Appointment Management', template_mode='bootstrap4') 
+admin = Admin(name='Appointment Management', template_mode='bootstrap4')  # Không gán app ở đây
 
 class UserModelView(ModelView):
     form_overrides = {
@@ -12,29 +12,23 @@ class UserModelView(ModelView):
         'user_status': SelectField,
     }
 
-    # Cung cấp danh sách lựa chọn tương ứng
     form_args = {
         'user_role': {
-            'choices': [
-                ('admin', 'Admin'),
-                ('doctor', 'Doctor'),
-                ('patient', 'Patient'),
-            ]
+            'choices': [('admin', 'Admin'), ('doctor', 'Doctor'), ('patient', 'Patient')]
         },
         'user_status': {
-            'choices': [
-                ('active', 'Active'),
-                ('inactive', 'Inactive')
-            ]
+            'choices': [('active', 'Active'), ('inactive', 'Inactive')]
         }
     }
-    
 
-admin.add_view(UserModelView(User, db.session))
-admin.add_view(ModelView(Patient, db.session))
-admin.add_view(ModelView(Doctor, db.session))
-admin.add_view(ModelView(Specialty, db.session))
-admin.add_view(ModelView(Room, db.session))
-admin.add_view(ModelView(Appointment, db.session))
-admin.add_view(ModelView(Schedule, db.session))
-admin.add_view(ModelView(Payment, db.session))
+# Hàm khởi tạo admin
+def init_admin(app):
+    admin.init_app(app)
+    admin.add_view(UserModelView(User, db.session))
+    admin.add_view(ModelView(Patient, db.session))
+    admin.add_view(ModelView(Doctor, db.session))
+    admin.add_view(ModelView(Specialty, db.session))
+    admin.add_view(ModelView(Room, db.session))
+    admin.add_view(ModelView(Appointment, db.session))
+    admin.add_view(ModelView(Schedule, db.session))
+    admin.add_view(ModelView(Payment, db.session))

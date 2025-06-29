@@ -26,10 +26,15 @@ def doctor_login():
 @doctor_bp.route('/doctor/regester', methods=['GET', 'POST'])
 def doctor_regester():
     if request.method == 'POST':
-        full_name = request.form['full_name']
-        username = request.form['username']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password']
+        full_name = request.form.get('full_name', '').strip()
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '').strip()
+        confirm_password = request.form.get('confirm_password', '').strip()
+        email = request.form.get('email', '').strip()
+        doctor_phone = request.form.get('doctor_phone', '').strip()
+        license_number = request.form.get('license_number', '').strip()
+
+        
 
         if password != confirm_password:
             flash("Passwords do not match!", "danger")
@@ -43,6 +48,9 @@ def doctor_regester():
             full_name=full_name,
             username=username,
             password=password,
+            doctor_email=email,
+            doctor_phone=doctor_phone,
+            license_number = license_number,
             created_at=datetime.now(),
             updated_at=datetime.now()
         )
