@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/account_form.css') }}">
+</head>
+<body>
+  <div class="login">
+    <div class="hello-welcome-here">Create an account</div>
+    <form method="POST" action="{{ url_for('main_bp.signup') }}">
+      <div class="form-container">
+        <!-- Email -->
+        <div class="email-container">
+          <label for="email">Email address</label>
+          <input type="email" name="email" placeholder="example@gmail.com" required>
+        </div>
+        <!-- First & Last Name on the same row -->
+        <div class="name-row">
+          <div class="name-container">
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name" placeholder="John" required>
+          </div>
+          <div class="name-container">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name" placeholder="Doe" required>
+          </div>
+        </div>
+        <!-- Password -->
+        <div class="password-container">
+          <label for="password">Password</label>
+          <input type="password" name="password" placeholder="••••••••" required>
+        </div>
+        <!-- Date of Birth -->
+        <div class="email-container">
+          <label for="day">Date of Birth</label>
+          <div style="display: flex; gap: 10px;">
+            <input type="number" name="day" placeholder="DD" required min="1" max="31" style="flex:1;">
+            <input type="number" name="month" placeholder="MM" required min="1" max="12" style="flex:1;">
+            <input type="number" name="year" placeholder="YYYY" required min="1900" max="2100" style="flex:1;">
+          </div>
+        </div>
+        <!-- Submit -->
+        <button type="submit" class="login-button">Create account</button>
+      </div>
+    </form>
+    <div class="go-to-signup">
+      Already have an account?
+      <a href="{{ url_for('main_bp.login') }}">Sign in</a>
+    </div>
+    <div style="font-size: 12px; color: #999; text-align: center; margin-top: 10px;">
+      By clicking Create account, I agree that I have read and accepted the <a href="#">Terms of use</a> and <a href="#">Privacy Policy</a>.
+    </div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,7 @@
-from flask import render_template, request, session, url_for, redirect, flash
+from flask import render_template, request, session, url_for, redirect
 from appointmentapp import app
 from appointmentapp import utils
+
 
 @app.route('/')
 def home():

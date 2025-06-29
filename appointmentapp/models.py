@@ -1,15 +1,13 @@
 from sqlalchemy import Column, Integer, String, DateTime, Date, ForeignKey, Text, Enum, Numeric
 from datetime import datetime
 from sqlalchemy.orm import relationship
-
 from appointmentapp import db
 
-
+# ----------------------------- Base Model -----------------------------
 class BaseModel(db.Model):
     __abstract__ = True
     created_at = Column(DateTime, default=datetime.utcnow)
     updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
 
 # ----------------------------- Specialty -----------------------------
 class Specialty(BaseModel):
@@ -25,7 +23,6 @@ class Specialty(BaseModel):
 
     def __str__(self):
         return self.specialty_name
-
 
 # ----------------------------- Room -----------------------------
 class Room(BaseModel):
@@ -46,13 +43,17 @@ class Room(BaseModel):
     def __str__(self):
         return self.room_number
 
-
 # ----------------------------- Doctor -----------------------------
 class Doctor(BaseModel):
     __tablename__ = 'Doctor'
 
     doctor_id = Column(Integer, primary_key=True)
     full_name = Column(String(80), nullable=False)
+
+    # Thông tin đăng nhập
+    username = Column(String(50), nullable=False, unique=True)
+    password = Column(String(100), nullable=False)
+
     doctor_email = Column(String(80), nullable=False)
     doctor_phone = Column(String(15), nullable=False)
     license_number = Column(String(30), nullable=False)
@@ -68,7 +69,6 @@ class Doctor(BaseModel):
     def __str__(self):
         return self.full_name
 
-
 # ----------------------------- Patient -----------------------------
 class Patient(BaseModel):
     __tablename__ = 'Patient'
@@ -81,15 +81,15 @@ class Patient(BaseModel):
     address = Column(String(220))
     medical_history = Column(Text)
     insurance_number = Column(String(50), nullable=False)
+    user_id = Column(Integer, ForeignKey('User.user_id'), nullable=False)  
 
+    user = relationship('User', backref='patient')  
     appointments = relationship('Appointment', back_populates='patient')
     payments = relationship('Payment', back_populates='patient')
     
 
-
     def __str__(self):
         return self.full_name
-
 
 # ----------------------------- User -----------------------------
 class User(BaseModel):
@@ -104,10 +104,8 @@ class User(BaseModel):
     user_phone = Column(String(15), nullable=False)
     user_status = Column(Enum('active', 'inactive', name='user_status'), default='active')
 
-
     def __str__(self):
         return self.user_name
-
 
 # ----------------------------- Appointment -----------------------------
 class Appointment(BaseModel):
@@ -124,7 +122,6 @@ class Appointment(BaseModel):
     reason = Column(Text, nullable=False)
     note = Column(Text)
 
-    # Relationships
     patient = relationship('Patient', back_populates='appointments')
     doctor = relationship('Doctor', back_populates='appointments')
     room = relationship('Room', back_populates='appointments')
@@ -132,7 +129,6 @@ class Appointment(BaseModel):
 
     def __str__(self):
         return f"Appointment {self.appointment_id}"
-
 
 # ----------------------------- Schedule -----------------------------
 class Schedule(BaseModel):
@@ -153,7 +149,6 @@ class Schedule(BaseModel):
     def __str__(self):
         return f"Schedule {self.schedule_id}"
 
-
 # ----------------------------- Payment -----------------------------
 class Payment(BaseModel):
     __tablename__ = 'Payment'
@@ -170,9 +165,6 @@ class Payment(BaseModel):
 
     appointment = relationship('Appointment', back_populates='payments')
     patient = relationship('Patient', back_populates='payments')
-    
 
     def __str__(self):
         return f"Payment {self.payment_id}"
-
-

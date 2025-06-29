@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+
+  <!-- Link CSS -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/account_form.css') }}">
+
+
+</head>
+<body>
+
+  <!-- Background container -->
+  <div class="login">
+    <div class="hello-welcome-here">Hello, Welcome here</div>
+
+    <!-- ✅ Đặt form đúng chỗ -->
+    <form method="POST" action="{{ url_for('main_bp.login') }}">
+      <div class="form-container">
+      <!-- Email field -->
+      <div class="email-container">
+        <label for="email">Email or username</label>
+      <input type="email" name="email" placeholder="example@gmail.com"  required>
+      </div>
+      <!-- Password field -->
+      <div class="password-container">
+        <label for="password">Password</label>
+      <input type="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="login-button">
+        Log in
+      </button>
+
+
+    </form>
+
+    
+    <!-- Link to Sign Up -->
+    <div class="go-to-signup">
+      Don't have an account? 
+      <a href="{{ url_for('main_bp.signup') }}" >Sign up</a>
+    </div>
+    </div>
+  </div>
+
+</body>
+</html>

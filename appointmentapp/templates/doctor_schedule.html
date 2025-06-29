@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doctor Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='da.css') }}">
+    <style>
+        .doctor-card {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 10px auto;
+        }
+        table {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div class="doctor-card">
+    <div class="avatar"></div>
+    <h1>Welcome, {{ doctor.full_name }}</h1>
+    <p><strong>Specialty:</strong> Internal Medicine</p>
+    <p><strong>Years of Experience:</strong> 10 years</p>
+    <p><strong>Email:</strong> doctor1@gmail.com</p>
+    <p><strong>Phone:</strong> 0123456789</p>
+</div>
+
+<h3 style="text-align:center; margin-top: 30px;"><a href="{{ url_for('doctor_bp.view_appointments') }}">Schedule</a></h3>
+
+
+</body>
+</html>
