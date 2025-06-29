@@ -6,6 +6,11 @@ from appointmentapp import db
 from datetime import datetime
 
 @app.route('/')
+def login():
+    # TODO: Implement login page
+    return "Login page - Coming soon!"
+
+@app.route('/home')
 def home():
     patients = utils.load_patients()
     specialties = utils.load_specialties()
