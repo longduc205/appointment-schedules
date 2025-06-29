@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>User Profile</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='userstyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/userstyle.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/watching.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
@@ -16,8 +17,14 @@
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
-        <div class="user-avatar">
-            <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="User" class="profile-icon">
+        <div class="user-dropdown">
+            <img src="{{ url_for('static', filename='images/user.jpg') }}" class="profile-icon" alt="User">
+            <div class="dropdown-content">
+                <a href="{{ url_for('user_bp.profile') }}">My Profile</a>
+
+                <a href="{{ url_for('appointments') }}">My Appointments</a>
+                <a href="#">Logout</a>
+            </div>
         </div>
     </header>
 
@@ -27,24 +34,69 @@
                 <img src="{{ url_for('static', filename='images/user.jpg') }}" alt="Doctor">
             </div>
             <div class="profile-info">
-                <h2>{{ user.fullname_user }}</h2>
+                <h2 id="displayName">{{ user.user_name }}</h2>
+                
                 <hr>
-                <div class="info-block">
-                    <h4>Contact Information</h4>
-                    <p><strong>Email id:</strong> <a href="mailto:{{ user.user_email }}">{{ user.user_email }}</a></p>
-                    <p><strong>Phone:</strong> <a href="tel:{{ user.user_phone }}">{{ user.user_phone }}</a></p>
-                    <p><strong>Address:</strong> {{ patient.address }}</p>
-                </div>
-                <div class="info-block">
-                    <h4>Basic Information</h4>
-                    <p><strong>Birthday:</strong> {{ patient.date_of_birth.strftime('%d %B, %Y') }}</p>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn-outline">Edit</button>
-                    <button class="btn-primary">Save information</button>
-                </div>
+
+                <form method="POST" action="{{ url_for('update_user_profile', user_id=user.user_id) }}">
+                    <!-- Full Name -->
+                    <div class="info-block">
+                        <h4>Full Name</h4>
+                        <p>
+                            <span id="displayName">{{ user.fullname_user }}</span>
+                            <input type="text" id="inputName" name="fullname_user" value="{{ user.fullname_user }}" class="edit-field" style="display:none;" required>
+                        </p>
+                    </div>
+
+                    <hr>
+                    <div class="info-block">
+                        <h4>Contact Information</h4>
+                        <p><strong>Email id:</strong>
+                            <span id="displayEmail">{{ user.user_email }}</span>
+                            <input type="email" name="user_email" value="{{ user.user_email }}" class="edit-field" style="display:none;">
+                        </p>
+                        <p><strong>Phone:</strong>
+                            <span id="displayPhone">{{ user.user_phone }}</span>
+                            <input type="text" name="user_phone" value="{{ user.user_phone }}" class="edit-field" style="display:none;">
+                        </p>
+                        <p><strong>Address:</strong>
+                            <span id="displayAddress">{{ patient.address }}</span>
+                            <input type="text" name="address" value="{{ patient.address }}" class="edit-field" style="display:none;">
+                        </p>
+                    </div>
+                    <div class="info-block">
+                        <h4>Basic Information</h4>
+                        <p><strong>Birthday:</strong>
+                            <span id="displayBirthday">{{ patient.date_of_birth.strftime('%d %B, %Y') }}</span>
+                            <input type="date" name="date_of_birth" value="{{ patient.date_of_birth.strftime('%Y-%m-%d') }}" class="edit-field" style="display:none;">
+                        </p>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button type="button" id="editBtn" class="btn-outline">Edit</button>
+                        <button type="submit" id="saveBtn" class="btn-primary" style="display:none;">Save information</button>
+                    </div>
+                </form>
+
             </div>
+
         </section>
     </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const editBtn = document.getElementById("editBtn");
+        const saveBtn = document.getElementById("saveBtn");
+        const editFields = document.querySelectorAll(".edit-field");
+        const spans = document.querySelectorAll("span[id^='display']");
+
+        editBtn.addEventListener("click", function () {
+            editFields.forEach(field => field.style.display = "inline");
+            spans.forEach(span => span.style.display = "none");
+            editBtn.style.display = "none";
+            saveBtn.style.display = "inline";
+        });
+    });
+</script>
+
 </body>
 </html>
