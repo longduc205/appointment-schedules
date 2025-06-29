@@ -19,11 +19,11 @@
 
     <!-- ✅ Đặt form đúng chỗ -->
     <form method="POST" action="{{ url_for('main_bp.login') }}">
-      <div class="form-container">
+    <div class="form-container">
       <!-- Email field -->
       <div class="email-container">
-        <label for="email">Email or username</label>
-      <input type="email" name="email" placeholder="example@gmail.com"  required>
+        <label for="username">Email or Username</label>
+        <input type="text" name="username" placeholder="example@gmail.com" required>
       </div>
       <!-- Password field -->
       <div class="password-container">
@@ -35,18 +35,26 @@
       <button type="submit" class="login-button">
         Log in
       </button>
-
+    </div>
 
     </form>
 
     
     <!-- Link to Sign Up -->
+    
     <div class="go-to-signup">
       Don't have an account? 
       <a href="{{ url_for('main_bp.signup') }}" >Sign up</a>
     </div>
-    </div>
+    
   </div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
 </body>
 </html>

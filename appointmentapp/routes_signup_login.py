@@ -52,27 +52,32 @@ def signup():
     return render_template('signup.html')
 
 
-@main_bp.route('/login', methods=['GET', 'POST'])
+@main_bp.route('/login', methods=['GET', 'POST'])  # Dùng Blueprint nếu có
 def login():
     if request.method == 'POST':
-        email = request.form.get('email')
-        password_input = request.form.get('password')
+        username = request.form.get('username', '').strip()
+        password = request.form.get('password', '')
 
-        print("📥 Email:", email)
-        print("📥 Password:", password_input)
+        # Tìm user trong bảng User
+        user = User.query.filter_by(user_name=username).first()
 
-        user = User.query.filter_by(user_email=email).first()
-        print("🔍 Found user:", user)
-
-        if user and check_password_hash(user.password, password_input):
-            print("✅ Login successful!")
+        if user and check_password_hash(user.password, password):
             session['user_id'] = user.user_id
-            session['user_name'] = user.fullname_user
-            session['role'] = user.user_role
-            return redirect(url_for('user_bp.profile'))
+            session['user_role'] = user.user_role
+
+            # Điều hướng dựa trên user_role
+            if user.user_role == 'doctor':
+                session['doctor_logged_in'] = True
+                session['doctor_id'] = user.user_id
+                return redirect(url_for('doctor_bp.doctor_dashboard'))
+            elif user.user_role == 'patient':
+                return redirect(url_for('user_bp.profile'))  # hoặc appointment page
+
+            flash("Unknown role!", "warning")
+            return redirect(url_for('main_bp.login'))
+
         else:
-            print("❌ Invalid login")
-            flash("Invalid email or password", "danger")
+            flash("Invalid username or password!", "danger")
 
     return render_template('login.html')
 

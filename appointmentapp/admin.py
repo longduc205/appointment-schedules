@@ -1,33 +1,29 @@
 from flask_admin import Admin
-from appointmentapp.models import *
 from flask_admin.contrib.sqla import ModelView
 from wtforms import SelectField
-from appointmentapp.extensions import db
+from appointmentapp.models import *
+from appointmentapp import db
 
+admin = Admin(name='Appointment Management', template_mode='bootstrap4')  # Không gán app ở đây
+
+class UserModelView(ModelView):
+    form_overrides = {
+        'user_role': SelectField,
+        'user_status': SelectField,
+    }
+
+    form_args = {
+        'user_role': {
+            'choices': [('admin', 'Admin'), ('doctor', 'Doctor'), ('patient', 'Patient')]
+        },
+        'user_status': {
+            'choices': [('active', 'Active'), ('inactive', 'Inactive')]
+        }
+    }
+
+# Hàm khởi tạo admin
 def init_admin(app):
-    admin = Admin(app, name='Appointment Management', template_mode='bootstrap4') 
-
-    class UserModelView(ModelView):
-        form_overrides = {
-            'user_role': SelectField,
-            'user_status': SelectField,
-        }
-        form_args = {
-            'user_role': {
-                'choices': [
-                    ('admin', 'Admin'),
-                    ('doctor', 'Doctor'),
-                    ('patient', 'Patient'),
-                ]
-            },
-            'user_status': {
-                'choices': [
-                    ('active', 'Active'),
-                    ('inactive', 'Inactive')
-                ]
-            }
-        }
-
+    admin.init_app(app)
     admin.add_view(UserModelView(User, db.session))
     admin.add_view(ModelView(Patient, db.session))
     admin.add_view(ModelView(Doctor, db.session))
