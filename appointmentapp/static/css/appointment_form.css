@@ -1,0 +1,136 @@
+* {
+    font-family: 'Inter', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+}
+
+.header-container {
+    background-color: #fff;
+    padding: 15px 40px;
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #E0E0E0;
+    display: flex;
+    align-items: center;
+}
+
+.header-title {
+    color: #4B5FFF;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h3.title {
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h3.title::after {
+    content: "";
+    width: 73px;
+    background: #4B5FFF;
+    position: absolute;
+    bottom: -10px;
+    display: block;
+    height: 3px;
+}
+
+.container {
+    margin-top: 70px !important;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(75, 95, 255, 0.05);
+    border: 1px solid #E0E0E0;
+}
+
+.patient-info-container,
+.appointment-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.patient-info,
+.appointment-info {
+    width: 50%;
+}
+
+.form-control {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E0E0E0;
+    margin-top: 5px;
+    color: #4B5FFF;
+    background-color: #fff;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.form-control::placeholder {
+    color: #adadad;
+    font-size: 16px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 16px;
+}
+
+.required {
+    color: #4B5FFF;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-primary {
+    text-align: center;
+    background: #4B5FFF;
+    padding: 15px 60px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary:hover {
+    opacity: 0.8;
+}
+
+.btn-container {
+    margin-top: 30px;
+    text-align: center;
+}
